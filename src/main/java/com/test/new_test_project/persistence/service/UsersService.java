@@ -22,10 +22,8 @@ public class UsersService {
     //
 
 
-    public Iterable<Users> findAll(){
-        return usersRepository.findAll();
+    public Iterable<Users> findAll(){return usersRepository.findAll();
     }
-
 //    public UserDTO create(UserDTO userDTO){
 //     //return usersRepository.create(new Users("1", "2", true, 1));
 ////        if (bankRepository.gateOne(userDTO.getBankOfice().intValue()) != null && bankRepository.gateOne(userDTO.getBankOfice().intValue()).getActiv() == true){
@@ -50,7 +48,21 @@ public class UsersService {
         return new UserDTO(cc.getId(), cc.getLastName(), cc.getFirstName(),cc.getActiv(), cc.getBankOfice());
     }
 
-    public Users gateOne(Integer id){return usersRepository.gateOne(id);}
+    //public Users gateOne(Integer id){return usersRepository.gateOne(id);}
+    public UserDTO gateOne(Integer id){
+        Users cc = usersRepository.gateOne(id);
+        UserDTO dto = convert(cc);
+        return dto;
+    }
 
-    public Users update(Integer id, UserDTO userDTO){return usersRepository.update(id, userDTO);}
+    //public Users update(Integer id, UserDTO userDTO){return usersRepository.update(id, userDTO);}
+    public UserDTO update(Integer id, UserDTO userDTO){
+        Users cc = usersRepository.update(id, userDTO);
+        UserDTO dto = convert(cc);
+        return dto;
+    }
+
+    public Boolean delete(Integer id){
+        return usersRepository.delete(id);
+    }
 }

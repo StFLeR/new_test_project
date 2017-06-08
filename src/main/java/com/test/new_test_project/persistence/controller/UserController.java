@@ -18,7 +18,7 @@ public class UserController {
     public Iterable<Users> findAll(){return usersService.findAll();}
 
     @GetMapping("/srv/users/{id}")
-    public Users gateOne(@PathVariable("id") Integer id){
+    public UserDTO gateOne(@PathVariable("id") Integer id){
         return usersService.gateOne(id);
     }
 
@@ -28,7 +28,12 @@ public class UserController {
     }
 
     @PutMapping("/srv/users/{id}")
-    public Users update (@PathVariable("id") Integer id,@RequestBody UserDTO userDTO){
+    public UserDTO update (@PathVariable("id") Integer id,@RequestBody UserDTO userDTO){
         return usersService.update(id, userDTO);
+    }
+
+    @DeleteMapping("/srv/users/{id}")
+    public Boolean delete(@PathVariable("id") Integer id){
+        return usersService.delete(id);
     }
 }

@@ -6,6 +6,8 @@ import com.test.new_test_project.persistence.entity.Users;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Repository;
 
+import javax.persistence.criteria.CriteriaBuilder;
+
 /**
  * Created by aamitreikin on 06.06.17.
  */
@@ -42,5 +44,12 @@ public class UsersRepository {
         users.setBankOfice(bankOfice);
         userRepository.save(users);
         return userRepository.findOne(id.longValue());
+    }
+
+    public Boolean delete(Integer id){
+        Users users =userRepository.findOne(id.longValue());
+        users.setActiv(false);
+        userRepository.save(users);
+        return true;
     }
 }
