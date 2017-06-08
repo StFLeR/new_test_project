@@ -25,4 +25,14 @@ public class CardController {
     public CreditCardDTO gateOne(@PathVariable Integer id){
         return cardService.gateOne(id);
     }
+
+    @PutMapping("/srv/card/{id}")
+    public CreditCardDTO update(@PathVariable Integer id,@RequestBody CreditCardDTO creditCardDTO){
+        return cardService.update(id, creditCardDTO);
+    }
+
+    @DeleteMapping("/srv/card/{id}")
+    public Boolean delete(@PathVariable Integer id){
+        return cardService.delete(id);
+    }
 }

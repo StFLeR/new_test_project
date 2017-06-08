@@ -23,7 +23,7 @@ public class CardService {
         return dto;
     }
     private CreditCardDTO convert(CreditCard cc) {
-        return new CreditCardDTO(cc.getActive(),cc.getAmouns(), cc.getCreditNamber(), cc.getUsers(), cc.getValidDate());
+        return new CreditCardDTO(cc.getId(), cc.getActive(),cc.getAmouns(), cc.getCreditNamber(), cc.getUsers(), cc.getValidDate());
     }
 
     public CreditCardDTO gateOne(Integer id){
@@ -31,4 +31,16 @@ public class CardService {
         CreditCardDTO dto = convert(cc);
         return dto;
     }
+
+    public CreditCardDTO update(Integer id, CreditCardDTO creditCardDTO){
+        CreditCard cc = cardRepository.update(id, creditCardDTO);
+        CreditCardDTO dto = convert(cc);
+        return dto;
+    }
+
+    public Boolean delete(Integer id){
+        return cardRepository.delete(id);
+    }
+
+
 }

@@ -13,6 +13,8 @@ public class CreditCard {
     @Id
     @GeneratedValue(strategy= GenerationType.SEQUENCE)
     private Long id;
+
+    @Column(unique=true)
     private Integer creditNamber;
     private Date validDate;
     private BigDecimal amouns;
@@ -22,13 +24,16 @@ public class CreditCard {
     @JoinColumn(name= "users_id")
     private Users users;
 
-    public CreditCard(Integer creditNamber, Date validDate, BigDecimal amouns, Boolean active, Users users){
+    public CreditCard(Long id,Integer creditNamber, Date validDate, BigDecimal amouns, Boolean active, Users users){
+        this.id=id;
         this.creditNamber =creditNamber;
         this.validDate =validDate;
         this.amouns = amouns;
         this.active = active;
         this.users = users;
     }
+
+    protected CreditCard(){}
 
     public Long getId() {
         return id;

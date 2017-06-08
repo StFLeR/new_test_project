@@ -13,18 +13,25 @@ import java.util.Date;
  * Created by aamitreikin on 07.06.17.
  */
 public class CreditCardDTO {
+    private Long id;
     private Integer creditNamber;
     private Date validDate;
     private BigDecimal amouns;
     private Boolean active;
     private Long usersId;
 
+    public Long getId() {
+        return id;
+    }
+
     @JsonCreator
-    public CreditCardDTO(@JsonProperty("creditNamber") Integer creditNamber,
+    public CreditCardDTO(@JsonProperty("id") Long id,
+                         @JsonProperty("creditNamber") Integer creditNamber,
                          @JsonProperty("validDate") Date validDate,
                          @JsonProperty("amouns")  BigDecimal amouns,
                          @JsonProperty("active") Boolean active,
                          @JsonProperty("usersId") Long usersId) {
+        this.id=id;
         this.creditNamber = creditNamber;
         this.validDate = validDate;
         this.amouns = amouns;
@@ -32,8 +39,8 @@ public class CreditCardDTO {
         this.usersId = usersId;
     }
 
-    public CreditCardDTO(Boolean active, BigDecimal amouns, Integer creditNamber, Users users, Date validDate) {
-        this(creditNamber, validDate, amouns, active, users.getId());
+    public CreditCardDTO(Long id, Boolean active, BigDecimal amouns, Integer creditNamber, Users users, Date validDate) {
+        this(id, creditNamber, validDate, amouns, active, users.getId());
     }
 
 
