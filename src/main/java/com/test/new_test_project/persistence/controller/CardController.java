@@ -4,10 +4,7 @@ import com.test.new_test_project.persistence.entity.CreditCard;
 import com.test.new_test_project.persistence.service.CardService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.MediaType;
-import org.springframework.web.bind.annotation.GetMapping;
-import org.springframework.web.bind.annotation.PostMapping;
-import org.springframework.web.bind.annotation.RequestBody;
-import org.springframework.web.bind.annotation.RestController;
+import org.springframework.web.bind.annotation.*;
 
 /**
  * Created by aamitreikin on 07.06.17.
@@ -23,4 +20,9 @@ public class CardController {
 
     @PostMapping(value = "/srv/card", consumes = MediaType.APPLICATION_JSON_UTF8_VALUE)
     public CreditCardDTO create(@RequestBody CreditCardDTO creditCardDTO){return cardService.create(creditCardDTO);}
+
+    @GetMapping("/srv/card/{id}")
+    public CreditCardDTO gateOne(@PathVariable Integer id){
+        return cardService.gateOne(id);
+    }
 }

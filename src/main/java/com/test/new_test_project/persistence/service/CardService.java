@@ -25,4 +25,10 @@ public class CardService {
     private CreditCardDTO convert(CreditCard cc) {
         return new CreditCardDTO(cc.getActive(),cc.getAmouns(), cc.getCreditNamber(), cc.getUsers(), cc.getValidDate());
     }
+
+    public CreditCardDTO gateOne(Integer id){
+        CreditCard  cc =  cardRepository.gateOne(id);
+        CreditCardDTO dto = convert(cc);
+        return dto;
+    }
 }

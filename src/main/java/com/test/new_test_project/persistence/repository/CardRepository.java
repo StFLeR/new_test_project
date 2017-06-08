@@ -24,5 +24,11 @@ public class CardRepository {
 
     public CreditCard create(CreditCardDTO creditCardDTO){
         Users users = userRepository.findOne(creditCardDTO.getUsersId());
-        return creditCardRepository.save(new CreditCard(creditCardDTO.getCreditNamber(), creditCardDTO.getValidDate(), creditCardDTO.getAmouns(), creditCardDTO.getActive(), users));}
+        return creditCardRepository.save(new CreditCard(creditCardDTO.getCreditNamber(), creditCardDTO.getValidDate(), creditCardDTO.getAmouns(), creditCardDTO.getActive(), users));
+    }
+
+    public  CreditCard gateOne(Integer id){
+        return creditCardRepository.findOne(id.longValue());
+    }
 }
+
