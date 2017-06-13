@@ -23,7 +23,12 @@ public class CardService {
         return dto;
     }
     private CreditCardDTO convert(CreditCard cc) {
-        return new CreditCardDTO(cc.getId(), cc.getActive(),cc.getAmouns(), cc.getCreditNamber(), cc.getUsers(), cc.getValidDate());
+        return new CreditCardDTO(cc.getId(),
+                cc.getActive(),
+                cc.getAmouns(),
+                cc.getCreditNamber(),
+                cc.getUsers(),
+                cc.getValidDate());
     }
 
     public CreditCardDTO gateOne(Integer id){
