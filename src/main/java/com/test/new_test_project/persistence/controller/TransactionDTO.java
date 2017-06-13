@@ -1,6 +1,7 @@
 package com.test.new_test_project.persistence.controller;
 
 import com.fasterxml.jackson.annotation.JsonCreator;
+import com.fasterxml.jackson.annotation.JsonFormat;
 import com.fasterxml.jackson.annotation.JsonProperty;
 import com.test.new_test_project.persistence.entity.CreditCard;
 
@@ -37,6 +38,7 @@ public class TransactionDTO {
         this.creditCardId = creditCardId;
     }
 
+    @JsonFormat(pattern = "yyyy-MM-dd")
     public Date getValidDate() {
         return validDate;
     }
