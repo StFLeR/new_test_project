@@ -28,7 +28,10 @@ public class TransactionService {
         Transaction transaction=transactionRepository.create(transactionDTO);
         TransactionDTO dto = convert(transaction);
         return dto;}
-        else {throw new EmptyStackException();}
+        else {
+            throw new RuntimeException("что то пошло не так");
+            //throw new EmptyStackException();
+            }
     }
 
     private TransactionDTO convert(Transaction transaction){
