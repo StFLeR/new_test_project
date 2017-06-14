@@ -63,4 +63,5 @@ public class Transaction {
                 "Transaction[id=%d, summ='%s', creditCardId='%s', validDate='%s']",
                 id, summ, creditCardId, validDate);
     }
+
 }
