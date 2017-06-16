@@ -4,6 +4,7 @@ import javax.persistence.*;
 import java.math.BigDecimal;
 import java.time.LocalDate;
 import java.util.Date;
+import java.util.Set;
 
 /**
  * Created by aamitreikin on 07.06.17.
@@ -16,6 +17,7 @@ public class CreditCard {
 
     @Column(unique=true)
     private Integer creditNamber;
+
     private Date validDate;
     private BigDecimal amouns;
     private Boolean active;

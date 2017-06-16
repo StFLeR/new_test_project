@@ -5,6 +5,8 @@ import com.test.new_test_project.persistence.entity.Users;
 import org.springframework.data.repository.CrudRepository;
 import org.springframework.stereotype.Repository;
 
+import java.util.List;
+
 /**
  * Created by aamitreikin on 06.06.17.
  */
