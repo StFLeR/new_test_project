@@ -1,5 +1,6 @@
 package com.test.new_test_project.persistence.controller;
 
+import com.test.new_test_project.persistence.entity.BankOfice;
 import com.test.new_test_project.persistence.entity.Users;
 import com.test.new_test_project.persistence.service.UsersService;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -35,5 +36,10 @@ public class UserController {
     @DeleteMapping("/srv/users/{id}")
     public Boolean delete(@PathVariable("id") Integer id){
         return usersService.delete(id);
+    }
+    //вывести всех юзеров которым равен bank_ofice_id
+    @GetMapping("/srv/users/bankOfice/{id}")
+    public Iterable<Users> findAllUsers(@PathVariable("id") Long id){
+        return usersService.findAllUsers(id);
     }
 }

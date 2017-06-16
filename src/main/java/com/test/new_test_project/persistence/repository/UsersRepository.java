@@ -53,6 +53,9 @@ public class UsersRepository {
         return true;
     }
 
+    public Iterable<Users> findAllUsers (Long id){
+        return userRepository.findBybankOficeId(id);}
+
 
 
 }

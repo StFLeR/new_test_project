@@ -1,6 +1,7 @@
 package com.test.new_test_project.persistence.controller;
 
 import com.test.new_test_project.persistence.entity.BankOfice;
+import com.test.new_test_project.persistence.entity.Users;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.*;
 import com.test.new_test_project.persistence.service.BankService;
@@ -38,6 +39,5 @@ public class BankController {
     public Boolean delete(@PathVariable("id") Integer id){
         return bankService.delete(id);
     }
-
 
 }

@@ -12,4 +12,6 @@ import java.util.List;
  */
 @Repository
 public interface UserRepository extends CrudRepository<Users, Long> {
+
+    Iterable<Users> findBybankOficeId(Long id);
 }

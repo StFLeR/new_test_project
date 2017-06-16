@@ -2,6 +2,7 @@ package com.test.new_test_project.persistence.service;
 
 import com.test.new_test_project.persistence.controller.BankDTO;
 import com.test.new_test_project.persistence.entity.BankOfice;
+import com.test.new_test_project.persistence.entity.Users;
 import com.test.new_test_project.persistence.repository.BankOficeRepository;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;

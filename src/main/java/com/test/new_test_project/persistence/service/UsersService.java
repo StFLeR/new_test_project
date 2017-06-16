@@ -1,12 +1,15 @@
 package com.test.new_test_project.persistence.service;
 
 import com.test.new_test_project.persistence.controller.UserDTO;
+import com.test.new_test_project.persistence.entity.BankOfice;
 import com.test.new_test_project.persistence.entity.Users;
 import com.test.new_test_project.persistence.repository.BankRepository;
 import com.test.new_test_project.persistence.repository.UsersRepository;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
+
+import java.util.Iterator;
 
 /**
  * Created by aamitreikin on 06.06.17.
@@ -48,14 +51,12 @@ public class UsersService {
         return new UserDTO(cc.getId(), cc.getLastName(), cc.getFirstName(),cc.getActiv(), cc.getBankOfice());
     }
 
-    //public Users gateOne(Integer id){return usersRepository.gateOne(id);}
     public UserDTO gateOne(Integer id){
         Users cc = usersRepository.gateOne(id);
         UserDTO dto = convert(cc);
         return dto;
     }
 
-    //public Users update(Integer id, UserDTO userDTO){return usersRepository.update(id, userDTO);}
     public UserDTO update(Integer id, UserDTO userDTO){
         Users cc = usersRepository.update(id, userDTO);
         UserDTO dto = convert(cc);
@@ -65,4 +66,9 @@ public class UsersService {
     public Boolean delete(Integer id){
         return usersRepository.delete(id);
     }
+
+    public Iterable<Users> findAllUsers (Long id){
+        return usersRepository.findAllUsers(id);}
+
+
 }
