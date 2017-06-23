@@ -21,6 +21,11 @@ public class TransactionDTO {
     private BigDecimal summ;
     private Long creditCardId;
     private Date validDate;
+    private Long accruedCreditCardId;
+
+    public Long getAccruedCreditCardId() {
+        return accruedCreditCardId;
+    }
 
     public BigDecimal getSumm() {
         return summ;
@@ -50,13 +55,15 @@ public class TransactionDTO {
     public TransactionDTO (@JsonProperty("id") Long id,
                            @JsonProperty("summ") BigDecimal summ,
                            @JsonProperty("creditCardId") Long creditCardId,
-                           @JsonProperty("validDate") Date validDate){
+                           @JsonProperty("validDate") Date validDate,
+                           @JsonProperty("accruedCreditCardId") Long accruedCreditCardId){
         this.id=id;
         this.summ=summ;
         this.creditCardId=creditCardId;
         this.validDate=validDate;
+        this.accruedCreditCardId=accruedCreditCardId;
     }
-    public TransactionDTO (Long id, BigDecimal summ, CreditCard creditCardId, Date validDate){
-        this(id, summ, creditCardId.getId(), validDate);
+    public TransactionDTO (Long id, BigDecimal summ, CreditCard creditCardId, Date validDate, CreditCard accruedCreditCardId){
+        this(id, summ, creditCardId.getId(), validDate, accruedCreditCardId.getId());
     }
 }

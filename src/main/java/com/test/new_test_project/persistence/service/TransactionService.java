@@ -8,8 +8,6 @@ import com.test.new_test_project.persistence.repository.TransactionRepository;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
-import java.util.EmptyStackException;
-
 /**
  * Created by aamitreikin on 13.06.17.
  */
@@ -20,25 +18,28 @@ public class TransactionService {
     @Autowired
     private CreditCardRepository creditCardRepository;
 
-    public Iterable<Transaction> findAll(){return transactionRepository.findAll();}
-
-    public TransactionDTO create(TransactionDTO transactionDTO){
-        CreditCard creditCard = creditCardRepository.findOne(transactionDTO.getCreditCardId());
-        if (creditCardRepository.findOne(transactionDTO.getCreditCardId())!= null && creditCard.getAmouns().compareTo(transactionDTO.getSumm())==1){
-        Transaction transaction=transactionRepository.create(transactionDTO);
-        TransactionDTO dto = convert(transaction);
-        return dto;}
-        else {
-            throw new RuntimeException("что то пошло не так");
-            //throw new EmptyStackException();
-            }
+    public Iterable<Transaction> findAll() {
+        return transactionRepository.findAll();
     }
 
-    private TransactionDTO convert(Transaction transaction){
+    public TransactionDTO create(TransactionDTO transactionDTO) {
+        CreditCard creditCard = creditCardRepository.findOne(transactionDTO.getCreditCardId());
+        if (creditCardRepository.findOne(transactionDTO.getCreditCardId()) != null && creditCard.getAmouns().compareTo(transactionDTO.getSumm()) == 1) {
+            Transaction transaction = transactionRepository.create(transactionDTO);
+            TransactionDTO dto = convert(transaction);
+            return dto;
+        } else {
+            throw new RuntimeException("что то пошло не так");
+            //throw new EmptyStackException();
+        }
+    }
+
+    private TransactionDTO convert(Transaction transaction) {
         return new TransactionDTO(transaction.getId(),
                 transaction.getSum(),
                 transaction.getCreditCardId(),
-                transaction.getValidDate());
+                transaction.getValidDate(),
+                transaction.getAccruedCreditCardId());
     }
 
 

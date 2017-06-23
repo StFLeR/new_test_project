@@ -19,11 +19,16 @@ public class Transaction {
     private CreditCard creditCardId;
     private Date validDate;
 
-    public Transaction(Long id, BigDecimal summ, CreditCard creditCardId, Date validDate){
+    @ManyToOne
+    @JoinColumn(name= "accrued_credit_card_id")
+    private CreditCard accruedCreditCardId;
+
+    public Transaction(Long id, BigDecimal summ, CreditCard creditCardId, Date validDate, CreditCard accruedCreditCardId){
         this.id=id;
         this.summ=summ;
         this.creditCardId=creditCardId;
         this.validDate=validDate;
+        this.accruedCreditCardId=accruedCreditCardId;
     }
 
     public Long getId() {
@@ -43,6 +48,10 @@ public class Transaction {
         return creditCardId;
     }
 
+    public void setAccruedCreditCardId(CreditCard accruedCreditCardId) {
+        this.accruedCreditCardId = accruedCreditCardId;
+    }
+
     public void setCreditCardId(CreditCard creditCardId) {
         this.creditCardId = creditCardId;
     }
@@ -57,11 +66,15 @@ public class Transaction {
 
     protected Transaction(){}
 
+    public CreditCard getAccruedCreditCardId() {
+        return accruedCreditCardId;
+    }
+
     @Override
     public String toString() {
         return String.format(
-                "Transaction[id=%d, summ='%s', creditCardId='%s', validDate='%s']",
-                id, summ, creditCardId, validDate);
+                "Transaction[id=%d, summ='%s', creditCardId='%s', validDate='%s', accruedCreditCardId='%s']",
+                id, summ, creditCardId, validDate, accruedCreditCardId);
     }
 
 }
