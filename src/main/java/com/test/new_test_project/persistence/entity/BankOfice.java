@@ -1,11 +1,6 @@
 package com.test.new_test_project.persistence.entity;
 
-import javax.persistence.Entity;
-import javax.persistence.GeneratedValue;
-import javax.persistence.GenerationType;
-import javax.persistence.Id;
 import javax.persistence.*;
-import javax.validation.Constraint;
 
 /**
  * Created by aamitreikin on 05.06.17.
@@ -25,7 +20,7 @@ public class BankOfice {
     }
     //делаем проверку на уникальное значение
     //@UniqueConstraint(columnNames={"name"})
-    @Column(unique=true)
+    @Column(unique = true)
     private String name;
 
     private String adres;

@@ -18,8 +18,12 @@ public class TransactionController {
     private TransactionService transactionService;
 
     @GetMapping("/srv/transact")
-    public Iterable<Transaction> findAll(){return transactionService.findAll();}
+    public Iterable<Transaction> findAll() {
+        return transactionService.findAll();
+    }
 
     @PostMapping("/srv/transact")
-    public TransactionDTO create(@RequestBody TransactionDTO transactionDTO){return  transactionService.create(transactionDTO);}
+    public TransactionDTO create(@RequestBody TransactionDTO transactionDTO) {
+        return transactionService.create(transactionDTO);
+    }
 }

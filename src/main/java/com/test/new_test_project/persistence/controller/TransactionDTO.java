@@ -13,15 +13,30 @@ import java.util.Date;
  */
 public class TransactionDTO {
     private Long id;
-
-    public Long getId() {
-        return id;
-    }
-
     private BigDecimal summ;
     private Long creditCardId;
     private Date validDate;
     private Long accruedCreditCardId;
+    @JsonCreator
+    public TransactionDTO(@JsonProperty("id") Long id,
+                          @JsonProperty("summ") BigDecimal summ,
+                          @JsonProperty("creditCardId") Long creditCardId,
+                          @JsonProperty("validDate") Date validDate,
+                          @JsonProperty("accruedCreditCardId") Long accruedCreditCardId) {
+        this.id = id;
+        this.summ = summ;
+        this.creditCardId = creditCardId;
+        this.validDate = validDate;
+        this.accruedCreditCardId = accruedCreditCardId;
+    }
+
+    public TransactionDTO(Long id, BigDecimal summ, CreditCard creditCardId, Date validDate, CreditCard accruedCreditCardId) {
+        this(id, summ, creditCardId.getId(), validDate, accruedCreditCardId.getId());
+    }
+
+    public Long getId() {
+        return id;
+    }
 
     public Long getAccruedCreditCardId() {
         return accruedCreditCardId;
@@ -50,20 +65,5 @@ public class TransactionDTO {
 
     public void setValidDate(Date validDate) {
         this.validDate = validDate;
-    }
-    @JsonCreator
-    public TransactionDTO (@JsonProperty("id") Long id,
-                           @JsonProperty("summ") BigDecimal summ,
-                           @JsonProperty("creditCardId") Long creditCardId,
-                           @JsonProperty("validDate") Date validDate,
-                           @JsonProperty("accruedCreditCardId") Long accruedCreditCardId){
-        this.id=id;
-        this.summ=summ;
-        this.creditCardId=creditCardId;
-        this.validDate=validDate;
-        this.accruedCreditCardId=accruedCreditCardId;
-    }
-    public TransactionDTO (Long id, BigDecimal summ, CreditCard creditCardId, Date validDate, CreditCard accruedCreditCardId){
-        this(id, summ, creditCardId.getId(), validDate, accruedCreditCardId.getId());
     }
 }

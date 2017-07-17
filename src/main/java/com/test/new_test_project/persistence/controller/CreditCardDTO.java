@@ -6,7 +6,6 @@ import com.fasterxml.jackson.annotation.JsonProperty;
 import com.test.new_test_project.persistence.entity.Users;
 
 import java.math.BigDecimal;
-import java.time.LocalDate;
 import java.util.Date;
 
 /**
@@ -20,18 +19,14 @@ public class CreditCardDTO {
     private Boolean active;
     private Long usersId;
 
-    public Long getId() {
-        return id;
-    }
-
     @JsonCreator
     public CreditCardDTO(@JsonProperty("id") Long id,
                          @JsonProperty("creditNamber") Integer creditNamber,
                          @JsonProperty("validDate") Date validDate,
-                         @JsonProperty("amouns")  BigDecimal amouns,
+                         @JsonProperty("amouns") BigDecimal amouns,
                          @JsonProperty("active") Boolean active,
                          @JsonProperty("usersId") Long usersId) {
-        this.id=id;
+        this.id = id;
         this.creditNamber = creditNamber;
         this.validDate = validDate;
         this.amouns = amouns;
@@ -41,6 +36,10 @@ public class CreditCardDTO {
 
     public CreditCardDTO(Long id, Boolean active, BigDecimal amouns, Integer creditNamber, Users users, Date validDate) {
         this(id, creditNamber, validDate, amouns, active, users.getId());
+    }
+
+    public Long getId() {
+        return id;
     }
 
 

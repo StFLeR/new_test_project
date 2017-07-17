@@ -6,8 +6,6 @@ import com.test.new_test_project.persistence.entity.Users;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Repository;
 
-import java.math.BigDecimal;
-
 /**
  * Created by aamitreikin on 07.06.17.
  */
@@ -21,12 +19,14 @@ public class CardRepository {
     @Autowired
     private CreditCardRepository creditCardRepository;
 
-    public Iterable<CreditCard> findAll(){return creditCardRepository.findAll();}
+    public Iterable<CreditCard> findAll() {
+        return creditCardRepository.findAll();
+    }
 
-    public CreditCard create(CreditCardDTO creditCardDTO){
+    public CreditCard create(CreditCardDTO creditCardDTO) {
         Users users = userRepository.findOne(creditCardDTO.getUsersId());
         return creditCardRepository.save(
-                new     CreditCard(creditCardDTO.getId(),
+                new CreditCard(creditCardDTO.getId(),
                         creditCardDTO.getCreditNamber(),
                         creditCardDTO.getValidDate(),
                         creditCardDTO.getAmouns(),
@@ -34,11 +34,11 @@ public class CardRepository {
                         users));
     }
 
-    public  CreditCard gateOne(Integer id){
+    public CreditCard gateOne(Integer id) {
         return creditCardRepository.findOne(id.longValue());
     }
 
-    public CreditCard update(Integer id,CreditCardDTO creditCardDTO){
+    public CreditCard update(Integer id, CreditCardDTO creditCardDTO) {
         Users users = userRepository.findOne(creditCardDTO.getUsersId());
         CreditCard creditCard = creditCardRepository.findOne(id.longValue());
         creditCard.setCreditNamber(creditCardDTO.getCreditNamber());
@@ -50,7 +50,7 @@ public class CardRepository {
         return creditCardRepository.findOne(id.longValue());
     }
 
-    public Boolean delete(Integer id){
+    public Boolean delete(Integer id) {
         CreditCard creditCard = creditCardRepository.findOne(id.longValue());
         creditCard.setActive(false);
         creditCardRepository.save(creditCard);

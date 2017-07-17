@@ -8,19 +8,20 @@ import javax.persistence.*;
 @Entity
 public class Users {
     @Id
-    @GeneratedValue(strategy= GenerationType.SEQUENCE)
+    @GeneratedValue(strategy = GenerationType.SEQUENCE)
     private Long id;
     private String firstName;
 
     //f@Column(unique=true)
     private String lastName;
-    private Boolean activ= true;
+    private Boolean activ = true;
 
     @ManyToOne
-    @JoinColumn(name= "bank_ofice_id")
+    @JoinColumn(name = "bank_ofice_id")
     private BankOfice bankOfice;
 
-    protected Users() {}
+    protected Users() {
+    }
 
     public Users(String firstName, String lastName, Boolean activ, BankOfice bankOfice) {
         this.firstName = firstName;
@@ -45,20 +46,20 @@ public class Users {
         return firstName;
     }
 
-    public String getLastName() {
-        return lastName;
-    }
-
-    public Boolean getActiv() {
-        return activ;
-    }
-
     public void setFirstName(String firstName) {
         this.firstName = firstName;
     }
 
+    public String getLastName() {
+        return lastName;
+    }
+
     public void setLastName(String lastName) {
         this.lastName = lastName;
+    }
+
+    public Boolean getActiv() {
+        return activ;
     }
 
     public void setActiv(Boolean activ) {

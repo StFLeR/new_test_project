@@ -2,9 +2,7 @@ package com.test.new_test_project.persistence.entity;
 
 import javax.persistence.*;
 import java.math.BigDecimal;
-import java.time.LocalDate;
 import java.util.Date;
-import java.util.Set;
 
 /**
  * Created by aamitreikin on 07.06.17.
@@ -12,10 +10,10 @@ import java.util.Set;
 @Entity
 public class CreditCard {
     @Id
-    @GeneratedValue(strategy= GenerationType.SEQUENCE)
+    @GeneratedValue(strategy = GenerationType.SEQUENCE)
     private Long id;
 
-    @Column(unique=true)
+    @Column(unique = true)
     private Integer creditNamber;
 
     private Date validDate;
@@ -23,19 +21,20 @@ public class CreditCard {
     private Boolean active;
 
     @ManyToOne
-    @JoinColumn(name= "users_id")
+    @JoinColumn(name = "users_id")
     private Users users;
 
-    public CreditCard(Long id,Integer creditNamber, Date validDate, BigDecimal amouns, Boolean active, Users users){
-        this.id=id;
-        this.creditNamber =creditNamber;
-        this.validDate =validDate;
+    public CreditCard(Long id, Integer creditNamber, Date validDate, BigDecimal amouns, Boolean active, Users users) {
+        this.id = id;
+        this.creditNamber = creditNamber;
+        this.validDate = validDate;
         this.amouns = amouns;
         this.active = active;
         this.users = users;
     }
 
-    protected CreditCard(){}
+    protected CreditCard() {
+    }
 
     public Long getId() {
         return id;
@@ -44,6 +43,10 @@ public class CreditCard {
     public Integer getCreditNamber() {
 
         return creditNamber;
+    }
+
+    public void setCreditNamber(Integer creditNamber) {
+        this.creditNamber = creditNamber;
     }
 
     public Boolean getActive() {
@@ -58,24 +61,20 @@ public class CreditCard {
         return validDate;
     }
 
-    public BigDecimal getAmouns() {
-        return amouns;
-    }
-
-    public Users getUsers() {
-        return users;
-    }
-
-    public void setCreditNamber(Integer creditNamber) {
-        this.creditNamber = creditNamber;
-    }
-
     public void setValidDate(Date validDate) {
         this.validDate = validDate;
     }
 
+    public BigDecimal getAmouns() {
+        return amouns;
+    }
+
     public void setAmouns(BigDecimal amouns) {
         this.amouns = amouns;
+    }
+
+    public Users getUsers() {
+        return users;
     }
 
     public void setUsers(Users users) {

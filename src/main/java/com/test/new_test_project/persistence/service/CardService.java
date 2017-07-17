@@ -15,13 +15,16 @@ public class CardService {
     @Autowired
     private CardRepository cardRepository;
 
-    public Iterable<CreditCard> findAll(){return cardRepository.findAll();}
+    public Iterable<CreditCard> findAll() {
+        return cardRepository.findAll();
+    }
 
-    public CreditCardDTO create(CreditCardDTO creditCardDTO){
-        CreditCard  cc =  cardRepository.create(creditCardDTO);
+    public CreditCardDTO create(CreditCardDTO creditCardDTO) {
+        CreditCard cc = cardRepository.create(creditCardDTO);
         CreditCardDTO dto = convert(cc);
         return dto;
     }
+
     private CreditCardDTO convert(CreditCard cc) {
         return new CreditCardDTO(cc.getId(),
                 cc.getActive(),
@@ -31,19 +34,19 @@ public class CardService {
                 cc.getValidDate());
     }
 
-    public CreditCardDTO gateOne(Integer id){
-        CreditCard  cc =  cardRepository.gateOne(id);
+    public CreditCardDTO gateOne(Integer id) {
+        CreditCard cc = cardRepository.gateOne(id);
         CreditCardDTO dto = convert(cc);
         return dto;
     }
 
-    public CreditCardDTO update(Integer id, CreditCardDTO creditCardDTO){
+    public CreditCardDTO update(Integer id, CreditCardDTO creditCardDTO) {
         CreditCard cc = cardRepository.update(id, creditCardDTO);
         CreditCardDTO dto = convert(cc);
         return dto;
     }
 
-    public Boolean delete(Integer id){
+    public Boolean delete(Integer id) {
         return cardRepository.delete(id);
     }
 

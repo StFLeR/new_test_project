@@ -2,7 +2,6 @@ package com.test.new_test_project.persistence.repository;
 
 import com.test.new_test_project.persistence.controller.BankDTO;
 import com.test.new_test_project.persistence.entity.BankOfice;
-import com.test.new_test_project.persistence.entity.Users;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Repository;
 
@@ -16,19 +15,19 @@ public class BankRepository {
     @Autowired
     private BankOficeRepository bankOficeRepository;
 
-    public Iterable<BankOfice> findAll(){
+    public Iterable<BankOfice> findAll() {
         return bankOficeRepository.findAll();
     }
 
-    public BankOfice gateOne(Integer id){
+    public BankOfice gateOne(Integer id) {
         return bankOficeRepository.findOne(id.longValue());
     }
 
-    public BankOfice create(BankDTO bankDTO){
+    public BankOfice create(BankDTO bankDTO) {
         return bankOficeRepository.save(new BankOfice(bankDTO.getName(), bankDTO.getAdres(), bankDTO.getActiv()));
     }
 
-    public BankOfice update(Integer id, BankDTO bankDTO){
+    public BankOfice update(Integer id, BankDTO bankDTO) {
         BankOfice bankOfice = bankOficeRepository.findOne(id.longValue());
         bankOfice.setName(bankDTO.getName());
         bankOfice.setAdres(bankDTO.getAdres());
@@ -37,13 +36,12 @@ public class BankRepository {
         return bankOficeRepository.findOne(id.longValue());
     }
 
-    public Boolean delete(Integer id){
+    public Boolean delete(Integer id) {
         BankOfice bankOfice = bankOficeRepository.findOne(id.longValue());
         bankOfice.setActiv(false);
         bankOficeRepository.save(bankOfice);
         return true;
     }
-
 
 
 }

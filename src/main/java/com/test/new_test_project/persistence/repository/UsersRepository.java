@@ -6,8 +6,6 @@ import com.test.new_test_project.persistence.entity.Users;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Repository;
 
-import javax.persistence.criteria.CriteriaBuilder;
-
 /**
  * Created by aamitreikin on 06.06.17.
  */
@@ -24,20 +22,22 @@ public class UsersRepository {
     private BankOficeRepository bankOficeRepository;
     //
 
-    public Iterable<Users> findAll(){
+    public Iterable<Users> findAll() {
         return userRepository.findAll();
     }
 
-    public Users gateOne(Integer id){return userRepository.findOne(id.longValue());}
-
-    public Users create(UserDTO userDTO){
-        BankOfice bankOfice = bankOficeRepository.findOne(userDTO.getBankOficeId());
-        return userRepository.save(new Users(userDTO.getFirstName(), userDTO.getLastName(), userDTO.getActiv(),  bankOfice));
+    public Users gateOne(Integer id) {
+        return userRepository.findOne(id.longValue());
     }
 
-    public Users update(Integer id, UserDTO userDTO){
+    public Users create(UserDTO userDTO) {
         BankOfice bankOfice = bankOficeRepository.findOne(userDTO.getBankOficeId());
-        Users users =userRepository.findOne(id.longValue());
+        return userRepository.save(new Users(userDTO.getFirstName(), userDTO.getLastName(), userDTO.getActiv(), bankOfice));
+    }
+
+    public Users update(Integer id, UserDTO userDTO) {
+        BankOfice bankOfice = bankOficeRepository.findOne(userDTO.getBankOficeId());
+        Users users = userRepository.findOne(id.longValue());
         users.setFirstName(userDTO.getFirstName());
         users.setLastName(userDTO.getLastName());
         users.setActiv(userDTO.getActiv());
@@ -46,16 +46,16 @@ public class UsersRepository {
         return userRepository.findOne(id.longValue());
     }
 
-    public Boolean delete(Integer id){
-        Users users =userRepository.findOne(id.longValue());
+    public Boolean delete(Integer id) {
+        Users users = userRepository.findOne(id.longValue());
         users.setActiv(false);
         userRepository.save(users);
         return true;
     }
 
-    public Iterable<Users> findAllUsers (Long id){
-        return userRepository.findBybankOficeId(id);}
-
+    public Iterable<Users> findAllUsers(Long id) {
+        return userRepository.findBybankOficeId(id);
+    }
 
 
 }

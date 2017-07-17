@@ -10,25 +10,28 @@ import java.util.Date;
 @Entity
 public class Transaction {
     @Id
-    @GeneratedValue(strategy= GenerationType.SEQUENCE)
+    @GeneratedValue(strategy = GenerationType.SEQUENCE)
     private Long id;
     private BigDecimal summ;
 
     @ManyToOne
-    @JoinColumn(name= "credit_card_id")
+    @JoinColumn(name = "credit_card_id")
     private CreditCard creditCardId;
     private Date validDate;
 
     @ManyToOne
-    @JoinColumn(name= "accrued_credit_card_id")
+    @JoinColumn(name = "accrued_credit_card_id")
     private CreditCard accruedCreditCardId;
 
-    public Transaction(Long id, BigDecimal summ, CreditCard creditCardId, Date validDate, CreditCard accruedCreditCardId){
-        this.id=id;
-        this.summ=summ;
-        this.creditCardId=creditCardId;
-        this.validDate=validDate;
-        this.accruedCreditCardId=accruedCreditCardId;
+    public Transaction(Long id, BigDecimal summ, CreditCard creditCardId, Date validDate, CreditCard accruedCreditCardId) {
+        this.id = id;
+        this.summ = summ;
+        this.creditCardId = creditCardId;
+        this.validDate = validDate;
+        this.accruedCreditCardId = accruedCreditCardId;
+    }
+
+    protected Transaction() {
     }
 
     public Long getId() {
@@ -48,10 +51,6 @@ public class Transaction {
         return creditCardId;
     }
 
-    public void setAccruedCreditCardId(CreditCard accruedCreditCardId) {
-        this.accruedCreditCardId = accruedCreditCardId;
-    }
-
     public void setCreditCardId(CreditCard creditCardId) {
         this.creditCardId = creditCardId;
     }
@@ -64,10 +63,12 @@ public class Transaction {
         this.validDate = validDate;
     }
 
-    protected Transaction(){}
-
     public CreditCard getAccruedCreditCardId() {
         return accruedCreditCardId;
+    }
+
+    public void setAccruedCreditCardId(CreditCard accruedCreditCardId) {
+        this.accruedCreditCardId = accruedCreditCardId;
     }
 
     @Override
