@@ -15,23 +15,23 @@ public class CardController {
     @Autowired
     private CardService cardService;
 
-    @GetMapping("/srv/card")
+    @GetMapping("/api/v1/card")
     public Iterable<CreditCard> findAll(){return cardService.findAll();}
 
-    @PostMapping(value = "/srv/card", consumes = MediaType.APPLICATION_JSON_UTF8_VALUE)
+    @PostMapping(value = "/api/v1/card", consumes = MediaType.APPLICATION_JSON_UTF8_VALUE)
     public CreditCardDTO create(@RequestBody CreditCardDTO creditCardDTO){return cardService.create(creditCardDTO);}
 
-    @GetMapping("/srv/card/{id}")
+    @GetMapping("/api/v1/card/{id}")
     public CreditCardDTO gateOne(@PathVariable Integer id){
         return cardService.gateOne(id);
     }
 
-    @PutMapping("/srv/card/{id}")
+    @PutMapping("/api/v1/card/{id}")
     public CreditCardDTO update(@PathVariable Integer id,@RequestBody CreditCardDTO creditCardDTO){
         return cardService.update(id, creditCardDTO);
     }
 
-    @DeleteMapping("/srv/card/{id}")
+    @DeleteMapping("/api/v1/card/{id}")
     public Boolean delete(@PathVariable Integer id){
         return cardService.delete(id);
     }
