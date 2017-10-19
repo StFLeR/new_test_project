@@ -17,12 +17,12 @@ public class TransactionController {
     @Autowired
     private TransactionService transactionService;
 
-    @GetMapping("/api/v1/transact")
+    @GetMapping("/api/v1/transacts")
     public Iterable<Transaction> findAll() {
         return transactionService.findAll();
     }
 
-    @PostMapping("/api/v1/transact")
+    @PostMapping("/api/v1/transacts")
     public TransactionDTO create(@RequestBody TransactionDTO transactionDTO) {
         return transactionService.create(transactionDTO);
     }

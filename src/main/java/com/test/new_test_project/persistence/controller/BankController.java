@@ -14,27 +14,27 @@ public class BankController {
     @Autowired
     private BankService bankService;
 
-    @GetMapping("/api/v1/Ofice")
+    @GetMapping("/api/v1/Ofices")
     public Iterable<BankOfice> findAll() {
         return bankService.findAll();
     }
 
-    @GetMapping("/api/v1/Ofice/{id}")
+    @GetMapping("/api/v1/Ofices/{id}")
     public BankOfice gateOne(@PathVariable("id") Integer id) {
         return bankService.gateOne(id);
     }
 
-    @PostMapping("/api/v1/Ofice")
+    @PostMapping("/api/v1/Ofices")
     public BankOfice create(@RequestBody BankDTO bankDTO) {
         return bankService.create(bankDTO);
     }
 
-    @PutMapping("/api/v1/Ofice/{id}")
+    @PutMapping("/api/v1/Ofices/{id}")
     public BankOfice update(@PathVariable("id") Integer id, @RequestBody BankDTO bankDTO) {
         return bankService.update(id, bankDTO);
     }
 
-    @DeleteMapping("/api/v1/Ofice/{id}")
+    @DeleteMapping("/api/v1/Ofices/{id}")
     public Boolean delete(@PathVariable("id") Integer id) {
         return bankService.delete(id);
     }

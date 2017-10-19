@@ -5,6 +5,7 @@ import com.test.new_test_project.persistence.entity.CreditCard;
 import com.test.new_test_project.persistence.entity.Transaction;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Repository;
+import org.springframework.transaction.annotation.Transactional;
 
 import java.math.BigDecimal;
 
@@ -29,6 +30,7 @@ public class TransactionRepository {
         return true;
     }
 
+    @Transactional
     public Transaction create(TransactionDTO transactionDTO) {
         CreditCard creditCard1 = creditCardRepository.findOne(transactionDTO.getCreditCardId());
         CreditCard creditCard2 = creditCardRepository.findOne(transactionDTO.getAccruedCreditCardId());
